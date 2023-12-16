@@ -1,7 +1,7 @@
-"use client";
+'use client'
 import Image from 'next/image';
 import { buscarVarios } from '../services/pokeapiService';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { PokemonCard } from '../components/PokemonCard';
 import { Pokemons } from '../@types/pokemons';
 
@@ -19,24 +19,18 @@ export default function Home() {
   }, [offset]);
 
   return (
-    <div className="bg-gradient-to-b from-blue-700 via-blue-300 to-white min-h-screen p-8">
-      <div className="container mx-auto">
+    <div className="bg-blue-100 min-h-screen p-8">
+      <div className="container mx-auto my-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {pokemons.map((pokemon, index) => (
-            <div key={pokemon.name} className="bg-white p-4 rounded-lg shadow-md">
-              <p className="text-2xl font-bold mb-2">#{index + 1}</p>
+          {pokemons.map((pokemon) => (
+            <div key={pokemon.name} className="bg-white p-4 rounded-lg mb-4">
               <PokemonCard pokename={pokemon.name} />
-              {pokemon.types && (
-                <p className="text-gray-600 mt-2">
-                  Type: {pokemon.types.map((type) => type.type.name).join(', ')}
-                </p>
-              )}
             </div>
           ))}
         </div>
         <div className="flex justify-between mt-8">
           <button
-            className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out"
             onClick={() => setOffset(offset + 10)}
           >
             Next
